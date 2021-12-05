@@ -6,51 +6,49 @@ import java.util.Collections;
 public class FraudActivityNotification {
 
     public static int activityNotification(List<Integer> expenditure, int d) {
-        int counter = 0;
-        int slow = 0;
-        for(int i = 0; i < expenditure.size(); i++) {
-            if(i >= d) {
-                float med = getMedian(expenditure, slow, i);
-                if(expenditure.get(i) >= (int)(2 * med)) {
-                    counter++;
-                }
-                slow++;
-            } else {
-                continue;
-            }
+        int[] eList = expenditure.stream().mapToInt(i->i).toArray();
+        int[] count = new int[201];
+        int result = 0;
+        for(int i = 0; i < d; i++) {
+            count[eList[i]]++;
         }
-        return counter;
+        for(int i = d; i < eList.length; i++) {
+            int median = (int)getMedian(count, d);
+            if(median <= eList[i]) {
+                result++;
+            }
+            count[eList[i-d]]--;
+            count[eList[i]]++;
+        }
+        return result;
     }
 
-    public static float getMedian(List<Integer> arr, int start, int end) {
-        float median = 0.0f;
-        List<Integer> list = new ArrayList<>();
-        while(start <= end-1) {
-            list.add(arr.get(start));
-            start++;
+    public static float getMedian(int[] count, int d) {
+        int sum = 0;
+        for(int i = 0; i < count.length; i++) {
+            sum += count[i];
+            if(2*sum == d) {
+                return (2*i+1);
+            } else if((2*sum) > d) {
+                return(i*2);
+            }
         }
-        Collections.sort(list);
-        if(list.size() % 2 == 0) {
-            median = (list.get(list.size() / 2) + list.get((list.size() + 1) / 2)) / 2;
-        } else {
-            median = list.get(list.size() / 2);
-        }
-        return median;
+        return 1;
     }
 
     public static void main(String[] args) {
         List<Integer> exp = new ArrayList<>();
-//        exp.add(10);
-//        exp.add(20);
-//        exp.add(30);
-//        exp.add(40);
-//        exp.add(50);
-        exp.add(1);
-        exp.add(2);
-        exp.add(3);
-        exp.add(4);
-        exp.add(4);
+        exp.add(10);
+        exp.add(20);
+        exp.add(30);
+        exp.add(40);
+        exp.add(50);
+//        exp.add(1);
+//        exp.add(2);
+//        exp.add(3);
+//        exp.add(4);
+//        exp.add(4);
         FraudActivityNotification fan = new FraudActivityNotification();
-        System.out.println(fan.activityNotification(exp, 4));
+        System.out.println(fan.activityNotification(exp, 3));
     }
 }

@@ -13,9 +13,13 @@ public class StringCompression {
                 sum = 1;
             }
         }
-
         output = output + s.charAt(s.length() - 1) + sum;
 
         return output;
+    }
+
+    public static void main(String[] args) {
+        StringCompression sc = new StringCompression();
+        System.out.println(sc.compress("aaabbfbbsfffbbb"));
     }
 }

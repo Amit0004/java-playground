@@ -5,45 +5,38 @@ import java.util.*;
 public class SherlockAndValidString {
 
     public static String isValid(String s) {
-        Map<Character, Integer> frequency = new HashMap<>();
-        Map<Integer, Set<Character>> freqToChar = new HashMap<>();
-        Set<Integer> numbers = new HashSet<>();
+        Map<Character, Integer> charFreqMap = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int freq = charFreqMap.getOrDefault(c, 0);
+            charFreqMap.put(c, ++freq);
+        }
 
-        for(int i = 0; i < s.length(); i++) {
-            frequency.put(s.charAt(i), frequency.getOrDefault(s.charAt(i), 0) + 1);
+        int[] arr = new int[charFreqMap.size()];
+        int idx = 0;
+        for (Map.Entry<Character, Integer> characterIntegerEntry : charFreqMap.entrySet()) {
+            arr[idx++] = characterIntegerEntry.getValue();
         }
-        for(Map.Entry<Character, Integer> k : frequency.entrySet()) {
-            if(freqToChar.containsKey(k.getValue())) {
-                freqToChar.get(k.getValue()).add(k.getKey());
-            } else {
-                freqToChar.putIfAbsent(k.getValue(), new HashSet<>());
-                freqToChar.get(k.getValue()).add(k.getKey());
-            }
-            System.out.println(k.getKey() + " : " + k.getValue());
-        }
-        System.out.println("--------------------------");
-        for(Map.Entry<Integer, Set<Character>> entry : freqToChar.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue().size());
-        }
-        System.out.println("--------------------------");
-        List<Integer> set = new ArrayList<>();
-        numbers.addAll(frequency.values());
-        set.addAll(numbers);
-        if(numbers.size() == 1) {
-            return "YES";
-        } else if(numbers.size() > 2) {
-            return "NO";
-        } else {
-            int s1 = freqToChar.get(set.get(0)).size();
-            int s2 = freqToChar.get(set.get(1)).size();
-            if(Math.abs(set.get(0) - set.get(1)) == 1 && (s1 == 1 || s2 == 1)) {
-                return "YES";
-            } else if((s1 == 1 && s2 != 1) || (s2 == 1 && s1 != 1)) {
-                return "YES";
-            } else {
-                return "NO";
-            }
-        }
+        Arrays.sort(arr);
+
+        if (charFreqMap.size() == 1) return "YES";
+
+        int first = arr[0];
+        int second = arr[1];
+        int secondLast = arr[arr.length - 2];
+        int last = arr[arr.length - 1];
+
+        // If first and last are same, then all frequencies are same
+        if (first == last) return "YES";
+
+        // If first is 1, and all other characters have 1 frequency
+        if (first == 1 && second == last) return "YES";
+
+        // If all are same and last character has just 1 extra count
+        if (first == second && second == secondLast && secondLast == (last - 1)) return "YES";
+
+        // Else invalid string
+        return "NO";
     }
 
     public static void main(String[] args) {

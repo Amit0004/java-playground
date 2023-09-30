@@ -1,12 +1,13 @@
 package com.leetcode;
 
+import java.math.BigInteger;
+
 /**
  * Palindrome number
  * Leetcode problem link: https://leetcode.com/problems/palindrome-number/
  * Problem level: Easy
  */
 public class PalindromeNumber {
-
     public boolean isPalindrome(int x) {
         char[] digits = String.valueOf(x).toCharArray();
         if(digits.length == 0 || digits.length == 1) return true;
@@ -22,5 +23,6 @@ public class PalindromeNumber {
         PalindromeNumber pn = new PalindromeNumber();
         int num = 121;
         System.out.println(pn.isPalindrome(num));
+        System.out.println(Long.valueOf("1000000000000000000000000000001"));
     }
 }

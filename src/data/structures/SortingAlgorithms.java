@@ -5,9 +5,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Sorting Algorithms
+ * Selection Sort - TC: O(n2) SC: O(n)
+ * Bubble Sort - TC: O(n2) SC: O(n)
+ * Insertion Sort - TC: O(n2) SC: O(n)
+ * Merge Sort - TC: O(nlogn) SC: O(n)
+ * Quick Sort - TC: O(nlogn) SC: O(1)
+ */
 public class SortingAlgorithms {
     /**
      * Selection sort
+     * Ref: https://www.youtube.com/watch?v=HGk_ypEuS24
      * @param nums
      * @return
      */
@@ -29,6 +38,7 @@ public class SortingAlgorithms {
 
     /**
      * Bubble sort
+     * Ref: https://www.youtube.com/watch?v=HGk_ypEuS24
      * @param nums
      * @return
      */
@@ -55,6 +65,7 @@ public class SortingAlgorithms {
 
     /**
      * InsertionSort
+     * Ref: https://www.youtube.com/watch?v=HGk_ypEuS24
      * @param nums
      * @return
      */
@@ -76,6 +87,7 @@ public class SortingAlgorithms {
 
     /**
      * Merge Sort
+     * Ref: https://www.youtube.com/watch?v=ogjf7ORKfd8
      * @param nums
      * @return
      */
@@ -126,6 +138,7 @@ public class SortingAlgorithms {
 
     /**
      * QuickSort
+     * Ref: https://www.youtube.com/watch?v=WIrA4YexLRQ
      * @param nums
      * @return
      */

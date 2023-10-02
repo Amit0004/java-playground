@@ -1,9 +1,6 @@
 package com.leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Leetcode: https://leetcode.com/problems/number-of-squareful-arrays/
@@ -68,5 +65,6 @@ public class SquarefulArrays {
             int result = sqarr.numSquarefulPerms(nums);
             System.out.println(result);
             System.out.println("perfect >> " + sqarr.isPerfectSquare(27));
+            System.out.println("sum >> " + List.of(nums).toArray().toString());
         }
 }

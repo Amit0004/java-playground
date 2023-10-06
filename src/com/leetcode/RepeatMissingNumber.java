@@ -12,14 +12,14 @@ public class RepeatMissingNumber {
         int n = numbers.size();
 
         // find S - Sn
-        long sn = (n * (n * 1)) / 2;
+        long sn = (n * (n + 1)) / 2;
 
         // find S2 - S2N
         long s2n = (n * (n + 1) * (2 * n + 1)) / 6;
         long s = 0, s2 = 0;
-        for(int i = 0; i < n; i++) {
-            s += (long)numbers.get(i);
-            s2 += (long)numbers.get(i) * (long)numbers.get(i);
+        for (Integer number : numbers) {
+            s += (long) number;
+            s2 += (long) number * (long) number;
         }
 
         long eq1 = s - sn;

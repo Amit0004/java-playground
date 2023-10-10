@@ -1,8 +1,6 @@
 package interview.set;
 
 public class MaxAreaIsland {
-
-
     public int maxArea(int[][] area) {
         int max = 0;
         for(int i = 0; i < area.length; i++) {

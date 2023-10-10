@@ -1,5 +1,7 @@
 package interview.set;
 
+import java.util.Arrays;
+
 /**
  * Find the maximum sum of a subarray of size K
  * Input: arr : [2, 5, 6, 7, 3, 4], k : 3

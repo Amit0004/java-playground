@@ -50,6 +50,7 @@ public class LongestCommonSubsequence {
         String s2 = "ACDGHR";
         int n = s1.length();
         int m = s2.length();
+
         int output = lcs.lcsRecursive(s1, s2, n, m);
         int output2 = lcs.lcsTopDown(s1, s2, n, m);
         System.out.println("LCS recursive output >> " + output);

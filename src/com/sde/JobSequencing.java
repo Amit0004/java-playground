@@ -14,8 +14,8 @@ public class JobSequencing {
         Arrays.sort(jobs, (a, b) -> b[2] - a[2]);
         int maxDeadline = 0;
         for(int[] job: jobs) {
-            if(job[2] > maxDeadline) {
-                maxDeadline = job[2];
+            if(job[1] > maxDeadline) {
+                maxDeadline = job[1];
             }
         }
 

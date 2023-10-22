@@ -31,6 +31,7 @@ public class NMeetingsRoom {
             return 1;
         });
 
+
         for(int[] meeting: meetings) {
             if(currentEnd < meeting[0]) {
                 currentEnd = meeting[1];

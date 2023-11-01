@@ -42,7 +42,7 @@ public class GraphColoring {
         int n = 3;
 
         GraphColoring gc = new GraphColoring();
-        boolean output = gc.graphColoring(graph, m);
+        boolean output = gc.graphColoring(graph, new int[]{}, 0, 0);
         System.out.println("Graph coloring output >> " + output);
     }
 }

@@ -22,8 +22,6 @@ public class PhoneNumberLetterCombination {
         numToAlpha.put('9', "wxyz");
 
         char[] charArr = digits.toCharArray();
-        for(char ch : charArr) {
-        }
         return result;
     }
 

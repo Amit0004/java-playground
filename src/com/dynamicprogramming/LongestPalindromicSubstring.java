@@ -13,6 +13,7 @@ public class LongestPalindromicSubstring {
     public int lcs(String k1) {
         String k2 = new StringBuilder(k1).reverse().toString();
         int max = 0;
+        String output = "";
         int m = k1.length();
         int n = k2.length();
 
@@ -30,6 +31,7 @@ public class LongestPalindromicSubstring {
                 if(k1.charAt(i - 1) == k2.charAt(j - 1)) {
                     dp[i][j] =  1 + dp[i - 1][j - 1];
                     max = Math.max(max, dp[i][j]);
+                    System.out.println("Substring >> " + k2.substring(i - 1, j - 1));
                 } else {
                     dp[i][j] = Math.max(
                             dp[i - 1][j],
@@ -59,7 +61,7 @@ public class LongestPalindromicSubstring {
     }
     public static void main(String[] args) {
         LongestPalindromicSubstring lps = new LongestPalindromicSubstring();
-        String input = "cbbd";
+        String input = "babad";
         int output = lps.getLongestPalindromicSubstringLength(input);
         System.out.println("Length of longest palindromic substring >>" + output);
     }

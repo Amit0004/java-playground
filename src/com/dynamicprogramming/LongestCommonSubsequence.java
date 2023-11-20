@@ -1,5 +1,9 @@
 package com.dynamicprogramming;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.TreeMap;
+
 public class LongestCommonSubsequence {
 
     public int lcsRecursive(String s1, String s2, int n, int m) {
@@ -25,6 +29,7 @@ public class LongestCommonSubsequence {
             dp[i][0] = 0;
         };
 
+        Map<Integer, Integer> map = new TreeMap<>();
         for(int i = 0; i < y + 1; i++) {
             dp[0][i] = 0;
         }

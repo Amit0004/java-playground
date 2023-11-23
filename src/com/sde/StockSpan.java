@@ -11,23 +11,21 @@ public class StockSpan {
     public int[] stockSpan(int[] stocks) {
         int[]span = new int[stocks.length];
 
-        //The stack stores last day with a stock greater than this day
         Stack<Integer>days = new Stack<Integer>();
 
         days.push(0);
         span[0] = 1;
         for(int i = 1 ; i < stocks.length ; i++){
 
-            while(!days.isEmpty() && stocks[days.peek()]<=stocks[i]){
+            while(!days.isEmpty() && stocks[days.peek()] < stocks[i]){
                 days.pop();
             }
 
             if(!days.isEmpty())
                 span[i] = i - days.peek();
             else
-                span[i] = 1;
+                span[i] = i + 1;
             days.push(i);
-
         }
         return span;
     }

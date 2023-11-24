@@ -7,7 +7,6 @@ import java.util.TreeMap;
 public class LongestCommonSubsequence {
 
     public int lcsRecursive(String s1, String s2, int n, int m) {
-        int counter = 0;
         if(n == 0 || m == 0) {
             return 0;
         }

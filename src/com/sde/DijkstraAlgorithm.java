@@ -2,7 +2,6 @@ package com.sde;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.PriorityQueue;
 
 /**
@@ -39,7 +38,7 @@ public class DijkstraAlgorithm {
             int dist = pq.peek().distance;
             pq.poll();
 
-            for(int i = 0; i < adj.get(i).size(); i++) {
+            for(int i = 0; i < adj.get(node).size(); i++) {
                 int weight = adj.get(node).get(i).get(1);
                 int adjNode = adj.get(node).get(i).get(0);
 

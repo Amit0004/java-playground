@@ -13,7 +13,7 @@ public class SearchBenchmarking {
         return result;
     }
 
-    public int binarySearch(int[] sortedList, int target) {
+    public void binarySearch(int[] sortedList, int target) {
         int start = Instant.now().getNano();
         int left = 0;
         int right = sortedList.length - 1;
@@ -23,7 +23,7 @@ public class SearchBenchmarking {
 
             if (sortedList[mid] == target) {
                 System.out.println("Binary search runtime >> " + (Instant.now().getNano() - start) + "ns");
-                return mid; // Element found at index 'mid'
+                return; // Element found at index 'mid'
             } else if (sortedList[mid] < target) {
                 left = mid + 1; // Adjust the left boundary
             } else {
@@ -31,10 +31,9 @@ public class SearchBenchmarking {
             }
         }
         System.out.println("Binary search runtime >> " + (Instant.now().getNano() - start) + "ns");
-        return -1; // Element not found in the list
     }
 
-    public int ternarySearch(int[] sortedList, int target) {
+    public void ternarySearch(int[] sortedList, int target) {
         int start = Instant.now().getNano();
         int left = 0;
         int right = sortedList.length - 1;
@@ -46,10 +45,10 @@ public class SearchBenchmarking {
 
             if (sortedList[mid1] == target) {
                 System.out.println("Ternary search runtime >> " + (Instant.now().getNano() - start) + "ns");
-                return mid1; // Element found at index 'mid1'
+                return; // Element found at index 'mid1'
             } else if (sortedList[mid2] == target) {
                 System.out.println("Ternary search runtime >> " + (Instant.now().getNano() - start) + "ns");
-                return mid2; // Element found at index 'mid2'
+                return; // Element found at index 'mid2'
             } else if (target < sortedList[mid1]) {
                 right = mid1 - 1; // Adjust the right boundary
             } else if (target > sortedList[mid2]) {
@@ -61,10 +60,9 @@ public class SearchBenchmarking {
         }
 
         System.out.println("Ternary search runtime >> " + (Instant.now().getNano() - start) + "ns");
-        return -1; // Element not found in the list
     }
 
-    public int quadarySearch(int[] arr, int target) {
+    public void quadarySearch(int[] arr, int target) {
         int start = Instant.now().getNano();
         int low = 0;
         int high = arr.length - 1;
@@ -76,13 +74,13 @@ public class SearchBenchmarking {
 
             if (arr[mid1] == target) {
                 System.out.println("Quadary search runtime >> " + (Instant.now().getNano() - start) + "ns");
-                return mid1;
+                return;
             } else if (arr[mid2] == target) {
                 System.out.println("Quadary search runtime >> " + (Instant.now().getNano() - start) + "ns");
-                return mid2;
+                return;
             } else if (arr[mid3] == target) {
                 System.out.println("Quadary search runtime >> " + (Instant.now().getNano() - start) + "ns");
-                return mid3;
+                return;
             }
 
             if (target < arr[mid1]) {
@@ -98,18 +96,17 @@ public class SearchBenchmarking {
             }
         }
         System.out.println("Quadary search runtime >> " + (Instant.now().getNano() - start) + "ns");
-        return -1; // Element not found
     }
 
 
 
     public static void main(String[] args) {
         SearchBenchmarking sb = new SearchBenchmarking();
-        int[] load = sb.loadGenerator(1_000_000);
+        int[] load = sb.loadGenerator(2_000_000_00);
         System.out.println("Running search for " + load.length + " elements");
-        sb.binarySearch(load, 878987);
-        sb.ternarySearch(load, 878987);
-        sb.quadarySearch(load, 878987);
+        sb.binarySearch(load, -1);
+        sb.ternarySearch(load, -1);
+        sb.quadarySearch(load, -1);
     }
 
 }
